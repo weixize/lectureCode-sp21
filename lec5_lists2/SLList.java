@@ -35,6 +35,20 @@ public class SLList {
 		size = 1;
 	}
 
+	public SLList(int[] integers) {
+		sentinel = new IntNode(63, null);
+		if (integers == null) {
+			size = 0;
+		} else {
+			size = integers.length;
+			IntNode N = sentinel;
+			for (int integer : integers) {
+				N.next = new IntNode(integer, null);
+				N = N.next;
+			}
+		}
+	}
+
  	/** Adds x to the front of the list. */
  	public void addFirst(int x) {
  		sentinel.next = new IntNode(x, sentinel.next);
@@ -59,6 +73,13 @@ public class SLList {
 
  		p.next = new IntNode(x, null);
  	}
+
+	 public void deleteFirst() {
+		 if (sentinel.next != null) {
+			 sentinel.next = sentinel.next.next;
+			 size -= 1;
+		 }
+	 }
  	
  	/** Returns the size of the list. */
  	public int size() {

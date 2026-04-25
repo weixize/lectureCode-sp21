@@ -36,6 +36,18 @@ public class IntList {
 		return rest.get(i - 1);
 	}
 
+	public void addAdjacent() {
+		if (rest != null) {
+			if (first == rest.first) {
+				first = first + rest.first;
+				rest = rest.rest;
+				addAdjacent();
+			} else {
+				rest.addAdjacent();
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		IntList L = new IntList(15, null);
 		L = new IntList(10, L);
