@@ -49,6 +49,16 @@ public class IntList {
 		}
 	}
 
+	public void add(int x) {
+		IntList p = this;
+		while (p.rest != null) {
+			p.rest = new IntList(p.first * p.first, p.rest);
+			p = p.rest.rest;
+		}
+		p.rest = new IntList(p.first * p.first, null);
+		p.rest.rest = new IntList(x, null);
+	}
+
 	public static void main(String[] args) {
 		IntList L = new IntList(15, null);
 		L = new IntList(10, L);
